@@ -21,7 +21,7 @@ def postlist(request):
     if request.method == 'GET':
         query = request.GET.get('query','')
         post = Post.objects.filter(title__icontains=query).order_by('-date_posted') 
-        p = Paginator(post,1)
+        p = Paginator(post,2)
         page = request.GET.get('page')
         posts = p.get_page(page)
         nums = "a" * posts.paginator.num_pages
@@ -36,7 +36,7 @@ def username(request):
     if request.method == 'GET':
         query = request.GET.get('query','')
         post = Post.objects.filter(title__icontains=query).order_by('author__username') 
-        p = Paginator(post,1)
+        p = Paginator(post,2)
         page = request.GET.get('page')
         posts = p.get_page(page)
         nums = "a" * posts.paginator.num_pages
@@ -51,7 +51,7 @@ def postitle(request):
     if request.method == 'GET':
         query = request.GET.get('query','')
         post = Post.objects.filter(title__icontains=query).order_by('title') 
-        p = Paginator(post,1)
+        p = Paginator(post,2)
         page = request.GET.get('page')
         posts = p.get_page(page)
         nums = "a" * posts.paginator.num_pages
@@ -66,7 +66,7 @@ def oldpostlist(request):
     if request.method == 'GET':
         query = request.GET.get('query','')
         post = Post.objects.filter(title__icontains=query).order_by('date_posted') 
-        p = Paginator(post,1)
+        p = Paginator(post,2)
         page = request.GET.get('page')
         posts = p.get_page(page)
         nums = "a" * posts.paginator.num_pages
